@@ -1,0 +1,7 @@
+Бот
+token: 5851168804:AAEUUhcEuuzmx_d-iGCI8KxwhxHKDLvWBP8
+link: t.me/webestnewsbot
+
+Канал
+id: -1001366124280
+link: https://t.me/+3OzK9CvElvA0YWJi

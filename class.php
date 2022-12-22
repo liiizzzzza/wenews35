@@ -33,11 +33,12 @@ private const ID_CHANEL='-1001366124280';
 
 public function send_news($text){
 	$getQuery = array(
-     "chat_id" 	=> ID_CHANEL,
+     "chat_id" 	=> self::ID_CHANEL,
      "text"  	=> $text,
      "parse_mode" => "html",
 );
-$ch = curl_init("https://api.telegram.org/bot". TOKEN ."/sendMessage?" . http_build_query($getQuery));
+
+$ch = curl_init("https://api.telegram.org/bot".self::TOKEN."/sendMessage?" . http_build_query($getQuery));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_HEADER, false);
@@ -45,7 +46,7 @@ curl_setopt($ch, CURLOPT_HEADER, false);
 $resultQuery = curl_exec($ch);
 curl_close($ch);
 
-echo $resultQuery;
+///echo $resultQuery;
 }
 
 }
