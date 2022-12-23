@@ -59,17 +59,15 @@ $('body').on('click', '.toolbar-removeFormat', function(){
 $('body').on('click', '.but', function(){
 
 var $test = $('#frj');
-var $t =  $test.html().replace(/<div>/g,'aaaaa');
-var $tt=$t.replace(/<div>|<\/div>/g,'aaaaa');
+var $t =  $test.html();
+var $tt=$t.replace(/<div>/g,'\n');
+var $ttt=$tt.replace(/<\/div>/g,'\n');
 
 $.ajax({
   url: '/sendax.php',         /* Куда пойдет запрос */
   method: 'get',             /* Метод передачи (post или get) */
   dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
-  data: {text: $t},     /* Параметры передаваемые в запросе. */
-  success: function(data){   /* функция которая будет выполнена после успешного запроса.*/  
-  alert(data);            /* В переменной data содержится ответ от index.php. */
-}
+  data: {text: $ttt},     /* Параметры передаваемые в запросе. */
 });
 });
 </script>
