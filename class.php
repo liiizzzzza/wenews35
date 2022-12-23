@@ -21,10 +21,6 @@ $e->setMessage();}
 }
 }
 
-class newss extends db{
-
-}
-
 
 class tg extends db{
 

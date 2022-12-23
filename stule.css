@@ -81,6 +81,7 @@ body {
 	font-size: 12px;
 }
 .editor {
+	/*display: inline-block;*/
 	min-height: 30%;
 	min-width: 50%;
 	border: 1px solid #ddd;

@@ -4,10 +4,76 @@
     <link rel="stylesheet" type="text/css" href="stule.css">
     <title>Wenews</title>
     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     </head>
 
 <body>
-  <script src="js.js"></script>
+<script src="jquery-3.6.3.min.js"></script>
+<script>
+
+  document.execCommand('defaultParagraphSeparator', false, '%0A');
+// Жирный (b)
+$('body').on('click', '.toolbar-b', function(){
+  document.execCommand('bold', false, null);
+  return false;
+});
+
+// Курсив (i)
+$('body').on('click', '.toolbar-i', function(){
+  document.execCommand('italic', false, null);
+  return false;
+});
+
+// Подчёркнутый текст (u)
+$('body').on('click', '.toolbar-u', function(){
+  document.execCommand('underline', false, null);
+  return false;
+});
+
+// Зачёркнутый текст (strike)
+$('body').on('click', '.toolbar-s', function(){
+  document.execCommand('strikethrough', false, null);
+  return false;
+});
+/*
+$('body').on('click', '.toolbar-s', function(){
+  document.execCommand('strikethrough', false, null);
+  return false;
+});*/
+
+// Ссылка (a)
+$('body').on('click', '.toolbar-a', function(){
+  var url = prompt('Введите URL', '');
+  document.execCommand('CreateLink', false, url);
+  return false;
+});
+
+// Очистить стили
+$('body').on('click', '.toolbar-removeFormat', function(){
+  document.execCommand('removeFormat', false, null);
+  return false;
+});
+
+
+///send messag
+$('body').on('click', '.but', function(){
+
+var $test = $('#frj');
+var $t =  $test.html().replace(/<div>/g,'aaaaa');
+var $tt=$t.replace(/<div>|<\/div>/g,'aaaaa');
+
+$.ajax({
+  url: '/sendax.php',         /* Куда пойдет запрос */
+  method: 'get',             /* Метод передачи (post или get) */
+  dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+  data: {text: $t},     /* Параметры передаваемые в запросе. */
+  success: function(data){   /* функция которая будет выполнена после успешного запроса.*/  
+  alert(data);            /* В переменной data содержится ответ от index.php. */
+}
+});
+});
+</script>
+
 <div id=head>Wenews Webest</div>
 
 <div id=sub><p>Subscribers</p>
@@ -23,6 +89,9 @@
   <a href="#" class="toolbar-a fas fa-link" title="Ссылка">inline URL</a>  
   <a href="#" class="toolbar-removeFormat">Очистить стили</a>
 </div><br>
-<div class="editor" contenteditable="true"></div>
+<div class="editor" id="frj" contenteditable="true"></div>
+
+<p>Img: <input type="file" class="toolbar fas fa" name="photo" multiple></p>
+<p> <input type="button" class="but" value="Отправить"></p>
 </div>
 </body>
